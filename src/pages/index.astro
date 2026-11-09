@@ -1,16 +1,347 @@
+
 ---
+import ContactForm from "../components/ContactForm.astro";
+import ImageSlider from "../components/ImageSlider.astro";
+
+const banda = "TEJONES";
+const subtitulo = "PREMIUM COVER BAND";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta
+      name="description"
+      content="Tejones Banda. Rock español e internacional de los 80, 90 y 2000 para eventos, ayuntamientos y celebraciones privadas."
+    />
+    <title>Tejones Banda | Premium Cover Band</title>
+  </head>
+
+  <body>
+    <main>
+      <nav class="navegacion">
+        <a class="marca" href="#inicio">TEJONES<span>.</span></a>
+        <a class="contacto" href="#contacto">CONTRATACIÓN ↗</a>
+      </nav>
+
+      <section class="portada" id="inicio">
+        <div class="contenido">
+          <p class="etiqueta">ROCK · DIRECTO · SIN FILTROS</p>
+          <h1>{banda}</h1>
+          <p class="subtitulo">{subtitulo}</p>
+          <p class="descripcion">
+            Las canciones que marcaron una época.<br />
+            La energía de vivirlas en directo.
+          </p>
+
+          <a class="boton" href="#contacto">
+            LLEVAMOS EL ROCK A TU EVENTO <span>↗</span>
+          </a>
+        </div>
+
+        <span class="numero">80 / 90 / 00</span>
+        <span class="decoracion" aria-hidden="true"></span>
+      </section>
+
+      <section class="presentacion" id="directo">
+        <p class="etiqueta">NO ES SOLO MÚSICA</p>
+        <h2>ES UNA NOCHE<br />PARA RECORDAR.</h2>
+        <p>
+          Rock español e internacional. Grandes himnos, guitarras
+          y un directo pensado para hacer vibrar al público.
+        </p>
+
+        <ImageSlider />
+      </section>
+
+      <section class="contratacion" id="contacto">
+        <p class="etiqueta">¿PREPARAMOS ALGO GRANDE?</p>
+        <h2>EL ESCENARIO<br />NOS ESPERA.</h2>
+        <p>Eventos · Ayuntamientos · Celebraciones privadas</p>
+
+        <ContactForm />
+
+        <p class="instagram">
+          ¿Quieres ver antes cómo suena?{" "}
+          <a href="https://www.instagram.com/tejonesbanda/" target="_blank" rel="noreferrer">
+            Síguenos en Instagram <span>↗</span>
+          </a>
+        </p>
+      </section>
+
+      <footer>
+        <a class="marca" href="#inicio">TEJONES<span>.</span></a>
+        <p>PREMIUM COVER BAND · ROCK EN DIRECTO</p>
+      </footer>
+    </main>
+  </body>
 </html>
+
+<style>
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    background: #0a0a0a;
+  }
+
+  :global(body) {
+    margin: 0;
+    color: #f5f0e7;
+    background: #0a0a0a;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .navegacion {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 7%;
+  }
+
+  .marca {
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+  }
+
+  .marca span {
+    color: #c6a15b;
+  }
+
+  .contacto {
+    padding-bottom: 7px;
+    border-bottom: 1px solid #c6a15b;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
+  .portada {
+    position: relative;
+    display: flex;
+    min-height: 90svh;
+    align-items: center;
+    overflow: hidden;
+    padding: 130px 10% 90px;
+    background:
+      radial-gradient(ellipse at 75% 45%, #4a281c55 0%, transparent 42%),
+      linear-gradient(115deg, #0a0a0a 25%, #17120e 100%);
+  }
+
+  .contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .etiqueta {
+    color: #c6a15b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+  }
+
+  h1 {
+    margin: 22px 0 0;
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 900;
+    letter-spacing: -0.09em;
+    line-height: 0.9;
+  }
+
+  .subtitulo {
+    margin-top: 22px;
+    color: #c6a15b;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: 0.32em;
+  }
+
+  .descripcion {
+    margin: 35px 0;
+    color: #c4bdb3;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.8;
+  }
+
+  .boton {
+    display: inline-flex;
+    min-height: 54px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 23px;
+    border: 1px solid #c6a15b;
+    color: #f5f0e7;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .boton:hover {
+    color: #0a0a0a;
+    background: #c6a15b;
+  }
+
+  .boton span {
+    color: #c6a15b;
+  }
+
+  .boton:hover span {
+    color: #0a0a0a;
+  }
+
+  .numero {
+    position: absolute;
+    right: 7%;
+    bottom: 40px;
+    color: #ffffff55;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+  }
+
+  .decoracion {
+    position: absolute;
+    top: 20%;
+    right: 8%;
+    width: 28vw;
+    height: 28vw;
+    max-width: 380px;
+    max-height: 380px;
+    border: 1px solid #c6a15b24;
+    border-radius: 50%;
+    box-shadow: 0 0 100px #c6a15b0b, inset 0 0 80px #c6a15b08;
+  }
+
+  .presentacion,
+  .contratacion {
+    padding: 110px 10%;
+  }
+
+  .presentacion {
+    max-width: 900px;
+  }
+
+  h2 {
+    margin: 25px 0;
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .presentacion > p:not(.etiqueta),
+  .contratacion > p:not(.etiqueta) {
+    max-width: 570px;
+    color: #bcb5ab;
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .contratacion {
+    background: #15120e;
+  }
+
+  .contratacion > p.instagram {
+    margin: 38px 0 0;
+    color: #888078;
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+
+  .instagram a {
+    padding-bottom: 4px;
+    border-bottom: 1px solid #c6a15b;
+    color: #c6a15b;
+  }
+
+  .instagram span {
+    color: #c6a15b;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 35px 7%;
+    border-top: 1px solid #ffffff12;
+  }
+
+  footer p {
+    color: #888078;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .navegacion {
+      padding: 24px 6%;
+    }
+
+    .contacto {
+      font-size: 0.62rem;
+    }
+
+    .portada {
+      min-height: 82svh;
+      padding: 120px 7% 100px;
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 17vw, 6rem);
+    }
+
+    .subtitulo {
+      letter-spacing: 0.2em;
+    }
+
+    .decoracion {
+      top: auto;
+      right: -15%;
+      bottom: 10%;
+      width: 65vw;
+      height: 65vw;
+    }
+
+    .presentacion,
+    .contratacion {
+      padding: 80px 7%;
+    }
+
+    footer {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 30px 7%;
+    }
+
+    footer p {
+      text-align: left;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    .boton {
+      transition: none;
+    }
+  }
+</style>
