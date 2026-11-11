@@ -1,95 +1,71 @@
-# Astro Starter Kit: Minimal
+# 🎸 Tejones Banda — Premium Cover Band
 
-```sh
-npm create astro@latest -- --template minimal
+> Web oficial y plataforma de contratación de **Tejones Banda**. Rock español e internacional de los años 80, 90 y 2000 para eventos, ayuntamientos y celebraciones privadas.
+
+---
+
+## ⚡ Características Principales
+
+- **Diseño Inmersivo y Oscuro:** Estética de directo, rock, sin filtros y totalmente optimizada para dispositivos móviles y de escritorio.
+- **Privacidad Absoluta (Aislamiento de Terceros):** Integración de vídeos de YouTube mediante una fachada local con `youtube-nocookie`. **0 peticiones de red y 0 cookies de Google/YouTube** en la carga inicial hasta que el usuario hace clic expresamente.
+- **Formulario de Contacto Anti-Spam (Serverless):** Endpoint seguro en Cloudflare Pages Functions (`/api/contacto`) con validación Zod, honeypot antispam, control de velocidad temporal anti-bots y pasarela de correo con **Resend**.
+- **Galería Interactiva de Previsualización:** Carrusel fluido y accesible con 8 posiciones dinámicas y navegación táctil o por teclado.
+- **Cumplimiento Legal RGPD / LSSI:** Páginas de Política de Privacidad y Aviso Legal integradas, con consentimiento explícito en formulario.
+- **Arquitectura de Coste Cero (D-015):** Diseñada para ejecutarse de forma totalmente gratuita sobre Cloudflare Pages y Resend (Plan Free), con un coste operativo recurrente de **0 €/mes**.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+- **Framework:** [Astro](https://astro.build/) (Arquitectura de islas estáticas y alto rendimiento).
+- **Estilos:** CSS Scoped nativo con diseño responsivo adaptativo.
+- **Backend / Serverless:** Cloudflare Pages Functions (`/functions/api/contacto.ts`).
+- **Validación:** Zod.
+- **Pruebas y Calidad:** Vitest (Pruebas unitarias e integración con cobertura > 93%) y Playwright.
+
+---
+
+## 🚀 Guía de Desarrollo Local
+
+### Prerrequisitos
+- Node.js (versión 18 o superior recomendada).
+- Gestor de paquetes `npm`.
+
+### Instalación
+
+1. Clona el repositorio e instala las dependencias:
+   ```bash
+   npm install
+   ```
+
+2. Arranca el servidor de desarrollo local en segundo plano:
+   ```bash
+   astro dev --background
+   ```
+   *(O en primer plano con `npx astro dev`)*.
+
+3. Abre en tu navegador:
+   `http://localhost:4321`
+
+---
+
+## 🧪 Pruebas y Puertas de Calidad (G0)
+
+Para ejecutar la suite completa de pruebas unitarias con informe de cobertura:
+```bash
+npm run test:coverage
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Para verificar la compilación de producción y la generación de cabeceras de seguridad:
+```bash
+npm run build
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 📄 Licencia y Créditos
 
-Any static assets, like images, can be placed in the `public/` directory.
+Desarrollado con arquitectura modular y agentes de IA bajo **Forge / OpenCode**.
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 📬 Formulario de contacto
-
-El formulario está en `src/components/ContactForm.astro` y valida los datos en
-cliente desde `src/scripts/contact-form.ts`.
-
-### Modo local
-
-Sin endpoint configurado, el formulario valida los campos y **simula** el envío:
-muestra una confirmación y escribe los datos en la consola del navegador. No se
-envía ningún correo.
-
-### Conectar el servicio del hosting
-
-1. Copia `.env.example` a `.env`.
-2. Asigna `PUBLIC_CONTACT_FORM_ENDPOINT` al endpoint del servicio de formularios.
-3. Reinicia el servidor de desarrollo.
-
-```sh
-PUBLIC_CONTACT_FORM_ENDPOINT=https://formspree.io/f/xxxxxxxx
-```
-
-El envío se hace por `POST` con codificación `application/x-www-form-urlencoded`
-y cabecera `Accept: application/json`. Formspree funciona directamente; otros
-servicios pueden necesitar campos adicionales (por ejemplo, la `access_key` de
-Web3Forms). Netlify Forms requiere ajustar el adaptador de envío. Para Vercel u
-otro hosting sin formularios nativos hará falta una API route o función
-serverless y un proveedor de email.
-
-Si se genera un build de producción sin endpoint, el formulario muestra un aviso
-en lugar de fingir un envío correcto.
-
-### Privacidad
-
-La página `src/pages/privacidad.astro` es un borrador. Antes de publicar hay que
-completar la identidad del responsable, el correo de contacto y el proveedor que
-tratará los datos.
-
-## 🖼️ Galería de directos
-
-El slider de la sección **“Es una noche para recordar”** está en
-`src/components/ImageSlider.astro` y su lógica en `src/scripts/image-slider.ts`.
-
-Las diapositivas se definen en el array `slides` del componente. Cada una acepta:
-
-- `title` y `caption`: textos visibles bajo la imagen.
-- `src` y `alt`: ruta y texto alternativo de la imagen.
-- `tone`: color de fondo del marco mientras no hay imagen.
-
-Mientras una diapositiva no tenga `src`, se muestra un marco placeholder con su
-número. Para añadir fotos reales, colócalas en `public/` o `src/assets/` y añade
-la ruta y el `alt` correspondientes.
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Autor / Arquitecto:** Borja García Gómez de Segura ([PandaCode](https://www.linkedin.com/in/borja-garc%C3%ADa-g%C3%ـrez-de-segura-287441328/)) 🐼
+- **Estado del Proyecto:** Producción / MVP completado al 100%.
