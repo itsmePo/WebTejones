@@ -1,0 +1,30 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./dist",
+      "numberOfRuns": 1,
+      "url": ["http://localhost/", "http://localhost/privacidad/"],
+      "settings": {
+        "preset": "mobile",
+        "skipAudits": ["is-on-https", "redirects-http"]
+      }
+    },
+    "assert": {
+      "assertions": {
+        "largest-contentful-paint": ["error", { "maxNumericValue": 2500 }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }],
+        "total-blocking-time": ["error", { "maxNumericValue": 200 }],
+        "first-contentful-paint": ["warn", { "maxNumericValue": 1800 }],
+        "errors-in-console": ["error", { "maxLength": 0 }],
+        "resource-summary:document:size": ["error", { "maxNumericValue": 51200 }],
+        "resource-summary:stylesheet:size": ["error", { "maxNumericValue": 102400 }],
+        "resource-summary:script:size": ["error", { "maxNumericValue": 153600 }],
+        "resource-summary:total:size": ["error", { "maxNumericValue": 1258291 }]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "reports/lighthouse"
+    }
+  }
+}

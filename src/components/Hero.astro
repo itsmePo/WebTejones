@@ -1,0 +1,176 @@
+---
+const banda = "TEJONES";
+const subtitulo = "PREMIUM COVER BAND";
+---
+
+<section class="portada" id="inicio">
+  <div class="contenido">
+    <p class="etiqueta">ROCK · DIRECTO · SIN FILTROS</p>
+    <h1>{banda}</h1>
+    <p class="subtitulo">{subtitulo}</p>
+    <p class="descripcion">
+      Las canciones que marcaron una época.<br />
+      La energía de vivirlas en directo.
+    </p>
+
+    <a class="boton" href="#contacto">
+      LLEVAMOS EL ROCK A TU EVENTO <span>↗</span>
+    </a>
+  </div>
+
+  <div class="portada-card-derecha" aria-hidden="true">
+    <div class="card-preview-box">
+      <span class="preview-badge">EN VIVO</span>
+      <span class="preview-title">PRÓXIMA GIRA</span>
+      <span class="preview-sub">80s · 90s · 00s</span>
+    </div>
+  </div>
+
+  <span class="numero">80 / 90 / 00</span>
+  <span class="decoracion" aria-hidden="true"></span>
+</section>
+
+<style>
+  .portada {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 120px 7% 80px 7%;
+    overflow: hidden;
+    gap: 40px;
+  }
+
+  .contenido {
+    max-width: 600px;
+    z-index: 2;
+  }
+
+  .portada-card-derecha {
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-preview-box {
+    width: 260px;
+    height: 340px;
+    background: linear-gradient(135deg, rgba(198, 161, 91, 0.15), rgba(10, 10, 10, 0.95));
+    border: 1px solid rgba(198, 161, 91, 0.3);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transform: rotate(3deg);
+    transition: transform 0.3s ease;
+  }
+
+  .card-preview-box:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  .preview-badge {
+    align-self: flex-start;
+    background: #c6a15b;
+    color: #0a0a0a;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    letter-spacing: 0.15em;
+  }
+
+  .preview-title {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+
+  .preview-sub {
+    font-size: 0.8rem;
+    color: #888078;
+    letter-spacing: 0.1em;
+  }
+
+  .etiqueta {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: #c6a15b;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: -0.03em;
+  }
+
+  .subtitulo {
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    letter-spacing: 0.2em;
+    color: #888078;
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+
+  .descripcion {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #b0a89f;
+    margin-bottom: 40px;
+  }
+
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    background-color: #c6a15b;
+    color: #0a0a0a;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .boton:hover {
+    background-color: #d8b46b;
+    transform: translateY(-2px);
+  }
+
+  .numero {
+    position: absolute;
+    right: 7%;
+    bottom: 10vh;
+    font-size: clamp(4rem, 15vw, 12rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    z-index: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+
+  .decoracion {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 30%, rgba(198, 161, 91, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    .portada-card-derecha {
+      display: none;
+    }
+    .portada {
+      padding-top: 140px;
+    }
+  }
+</style>

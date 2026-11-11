@@ -7,11 +7,40 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/build-headers.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "typecheck": "astro check",
+    "lint": "eslint .",
+    "test": "vitest run --project unit",
+    "test:unit": "vitest run --project unit",
+    "test:integration": "vitest run --project integration",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test --project=e2e-chromium --project=e2e-webkit-mobile",
+    "axe": "playwright test --project=a11y-chromium",
+    "mutation": "stryker run",
+    "budget": "node scripts/check-budgets.mjs",
+    "lighthouse": "npm run budget && lhci autorun",
+    "report:summary": "node scripts/summarize-quality.mjs",
+    "gate": "npm run build && npm run typecheck && npm run lint && npm run test:unit && npm run test:integration && npm run test:coverage && npm run mutation && npm run test:e2e && npm run lighthouse && npm run axe"
   },
   "dependencies": {
     "astro": "^7.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@axe-core/playwright": "^4.14.0",
+    "@lhci/cli": "^0.16.0",
+    "@playwright/test": "^1.65.0",
+    "@stryker-mutator/core": "^10.1.1",
+    "@stryker-mutator/vitest-runner": "^10.1.1",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.14.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "globals": "^17.14.0",
+    "jsdom": "^31.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.2",
+    "vitest": "^5.1.0"
   }
 }

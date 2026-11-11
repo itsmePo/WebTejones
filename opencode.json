@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai",
+  "model": "google/gemini-2.5-flash-lite",
+  "small_model": "google/gemini-3.1-flash-lite-preview",
+  "agent": {
+    "orchestrator": {
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    "frontend": {
+      "model": "google/gemini-flash-lite-latest"
+    },
+    "backend": {
+      "model": "google/gemini-flash-lite-latest"
+    },
+    "ux-designer": {
+      "model": "google/gemini-flash-lite-latest"
+    },
+    "spec-reviewer": {
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    "code-reviewer": {
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    "qa": {
+      "model": "google/gemini-3.1-flash-lite-preview"
+    }
+  }
+}

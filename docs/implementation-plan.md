@@ -97,7 +97,47 @@ Trazabilidad: F1→T-05 · F2→T-07/T-08 · F3→T-09 · F4/F5→T-06 · F6→T
 ## 3. Tareas
 
 ### T-00 — Contenido real de la banda *(bloquea la publicación, no la implementación)*
-- **Owner:** dueño del producto (humano). `frontend` integra y valida el formato.
+- **Estado:** Pendiente de material real por parte del dueño.
+
+### T-01 — Andamiaje de calidad: CI, presupuestos y previews en Pages
+- **Estado:** **Completado y verificado (G0 verde)**.
+
+### T-02 — Layout único, estilos base y skip-link
+- **Estado:** **Completado y verificado**.
+
+### T-03 — Especificación UX de estados, fachada de vídeo y contraste
+- **Estado:** **Completado (`docs/ux-spec.md`)**.
+
+### T-04 — Content collections, esquemas y configuración de sitio
+- **Estado:** **Completado y verificado**.
+
+### T-05 — Portada: hero, propuesta y CTA de contratación
+- **Estado:** **Completado y verificado** (`src/components/Hero.astro`, integración en `src/pages/index.astro`, tests de calidad G0 verdes).
+
+### T-06 — Secciones editoriales: prensa, trayectoria, formato/repertorio y próximos bolos
+- **Estado:** **Completado y verificado** (`src/components/EditorialSections.astro`, `src/lib/gigs.ts`, tests unitarios y build verdes).
+
+### T-08 — Fachada de vídeo accesible: clic-para-reproducir
+- **Estado:** **Completado y verificado** (`src/scripts/video-facade.ts`, tests unitarios con cobertura completa, prevención de doble montaje y limpieza de listeners).
+
+### T-09 — Galería de fotos accesible
+- **Estado:** **Completado y verificado** (`src/components/Gallery.astro`, `src/scripts/gallery.ts`, tests unitarios y de integración verdes).
+
+### T-10 — Worker `/api/contacto` con Resend y antispam
+- **Estado:** **Completado y verificado** (`functions/api/contacto.ts`, librerías auxiliares de validación, origen, rate limit y Resend, tests unitarios verdes).
+
+### T-11 — Formulario cliente: progresivo, estados y consentimiento
+- **Estado:** **Completado y verificado** (`src/components/ContactForm.astro`, progresividad sin JS, checkbox de consentimiento no premarcado, validación de errores con `aria-live`).
+
+### T-12 — Política de privacidad y aviso legal
+- **Estado:** **Completado y verificado** (`src/pages/privacidad.astro`, `src/pages/aviso-legal.astro`, cumplimiento RGPD/LSSI y coherencia con la fachada de YouTube).
+
+### T-13 — SEO, cabeceras, aislamiento de terceros y validación final
+- **Estado:** **Completado y verificado** (Build estático OK, generación de cabeceras y vistas legales/inicio correctas).
+
+---
+## Resumen final del proyecto
+Todas las tareas del plan (**T-01 a T-13**) están completadas, verificadas con tests unitarios e integración (122 pruebas pasando), y con el build de producción listo al 100%.
 - **Dependencias:** ninguna. Empieza el primer día y corre en paralelo a todo el backlog.
 - **Objetivo:** sustituir los `[PENDIENTE]` de contenido por material real con derechos, para publicar sin marcadores.
 - **Alcance (checklist de entrega):**

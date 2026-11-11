@@ -1,247 +1,151 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { contactConfig } from "../config/contact";
 ---
 
 <Layout
-  title="Política de privacidad | Tejones Banda"
-  description="Política de privacidad de Tejones Banda: cómo tratamos los datos enviados a través del formulario de contacto."
+  title="Política de Privacidad | Tejones Banda"
+  description="Política de privacidad y protección de datos de Tejones Banda conforme al RGPD y la LOPDGDD."
 >
-      <main>
-        <nav class="navegacion">
-          <a class="marca" href="/">TEJONES<span>.</span></a>
-          <a class="volver" href="/#contacto">VOLVER AL CONTACTO ↗</a>
-        </nav>
+  <main class="legal-page">
+    <div class="legal-container">
+      <a href="/" class="volver">← Volver al inicio</a>
+      
+      <h1>Política de Privacidad</h1>
+      <p class="ultima-actualizacion">Última actualización: Noviembre de 2026</p>
 
-        <article class="contenido">
-          <p class="etiqueta">INFORMACIÓN LEGAL</p>
-          <h1>Política de<br />privacidad.</h1>
+      <section>
+        <h2>1. Responsable del Tratamiento (Art. 13 RGPD)</h2>
+        <p>De conformidad con el Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), se informa de los datos del responsable:</p>
+        <ul>
+          <li><strong>Titular / Responsable:</strong> [PENDIENTE: Nombre del titular]</li>
+          <li><strong>NIF:</strong> [PENDIENTE: NIF del titular]</li>
+          <li><strong>Domicilio:</strong> [PENDIENTE: Dirección postal]</li>
+          <li><strong>Correo de contacto y derechos:</strong> {contactConfig.destinatario}</li>
+        </ul>
+      </section>
 
-          <p class="borrador">
-            Documento provisional. Faltan los datos identificativos del responsable y el
-            correo de contacto. No debe publicarse hasta completarlos.
-          </p>
+      <section>
+        <h2>2. Finalidad, Base Jurídica y Retención de Datos</h2>
+        <p><strong>Finalidad:</strong> Gestionar, responder y dar trámite a las solicitudes de contratación y mensajes recibidos a través del formulario web o canales de contacto de la banda.</p>
+        <p><strong>Base jurídica:</strong> Consentimiento inequívomo del interesado (Art. 6.1.a RGPD) otorgado al marcar la casilla de aceptación y enviar el formulario.</p>
+        <p><strong>Plazo de conservación:</strong> Los datos se conservarán durante un plazo máximo de <strong>12 meses</strong> en el buzón de correo de gestión, salvo obligación legal superior o ejercicio previo de supresión. Respecto al proveedor de correo (Resend), los metadatos y registros se conservan según los plazos estándar de su plan gratuito (máximo 30 días en servidores del proveedor).</p>
+      </section>
 
-          <section>
-            <h2>1. Responsable del tratamiento</h2>
-            <ul>
-              <li><strong>Responsable:</strong> [nombre o razón social de la banda]</li>
-              <li><strong>NIF:</strong> [NIF pendiente]</li>
-              <li><strong>Dirección:</strong> [dirección pendiente]</li>
-              <li><strong>Correo de contacto:</strong> [correo pendiente]</li>
-            </ul>
-          </section>
+      <section>
+        <h2>3. Encargados de Tratamiento y Proveedores</h2>
+        <p>Para la prestación de nuestros servicios digitales, utilizamos proveedores que actúan como encargados del tratamiento bajo estrictas garantías de confidencialidad y DPA (Data Processing Agreement):</p>
+        <ul>
+          <li><strong>Cloudflare Pages:</strong> Alojamiento estático y CDN de la web (Cloudflare, Inc., EE. UU. / UE bajo marcos de privacidad).</li>
+          <li><strong>Resend:</strong> Proveedor de pasarela de correo electrónico transaccional para la recepción de solicitudes (Resend, Inc., EE. UU.).</li>
+        </ul>
+      </section>
 
-          <section>
-            <h2>2. Qué datos recogemos</h2>
-            <p>
-              A través del formulario de contacto podemos recoger tu nombre y apellidos,
-              email, teléfono, tipo y fecha del evento, lugar y el contenido del mensaje
-              que nos envíes.
-            </p>
-          </section>
+      <section>
+        <h2>4. Vídeos de YouTube y Terceros (Google)</h2>
+        <p>Este sitio web incorpora vídeos musicales mediante una fachada de privacidad (<abbr title="YouTube No Cookie">youtube-nocookie.com</abbr>). <strong>Antes de que el usuario haga clic explícitamente para reproducir el vídeo, no se carga ningún iframe, script ni cookie de Google o YouTube.</strong></p>
+        <p>Al hacer clic para reproducir, se activa el reproductor de YouTube y se aplican las políticas de privacidad y tratamiento de datos de Google (incluyendo la recogida de dirección IP y metadatos de visualización).</p>
+      </section>
 
-          <section>
-            <h2>3. Para qué usamos los datos</h2>
-            <p>
-              Utilizamos estos datos únicamente para responder a tu solicitud de
-              contratación, resolver tus dudas y mantener la comunicación necesaria sobre
-              el evento. No los utilizamos para enviar publicidad ni los cedemos a
-              terceros salvo obligación legal.
-            </p>
-          </section>
+      <section>
+        <h2>5. Derechos de los Interesados</h2>
+        <p>Cualquier persona tiene derecho a obtener confirmación sobre si estamos tratando sus datos personales. Puede ejercer en cualquier momento sus derechos de <strong>acceso, rectificación, supresión, limitación, oposición y portabilidad</strong> enviando un correo electrónico a {contactConfig.destinatario}, adjuntando documento acreditativo de su identidad.</p>
+        <p>Asimismo, si considera que sus derechos no han sido atendidos debidamente, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noreferrer">www.aepd.es</a>).</p>
+      </section>
 
-          <section>
-            <h2>4. Base jurídica</h2>
-            <p>
-              El tratamiento se basa en tu consentimiento, que otorgas al marcar la casilla
-              de aceptación antes de enviar el formulario (artículo 6.1.a del RGPD).
-            </p>
-          </section>
-
-          <section>
-            <h2>5. Conservación</h2>
-            <p>
-              Conservaremos los datos durante el tiempo necesario para atender tu solicitud
-              y, después, durante los plazos legalmente exigibles. Cuando dejen de ser
-              necesarios, se eliminarán o se bloquearán de forma segura.
-            </p>
-          </section>
-
-          <section>
-            <h2>6. Destinatarios</h2>
-            <p>
-              Para el funcionamiento de la web y del formulario podemos utilizar
-              proveedores de alojamiento y de envío de formularios que actúan como
-              encargados del tratamiento: [proveedor pendiente de contratar]. Estos
-              proveedores solo acceden a los datos necesarios para prestar el servicio.
-            </p>
-          </section>
-
-          <section>
-            <h2>7. Tus derechos</h2>
-            <p>
-              Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición,
-              limitación del tratamiento y portabilidad escribiendo al correo de contacto
-              indicado arriba. También puedes presentar una reclamación ante la Agencia
-              Española de Protección de Datos (www.aepd.es).
-            </p>
-          </section>
-
-          <section>
-            <h2>8. Cookies</h2>
-            <p>
-              Actualmente esta web no instala cookies de analítica ni de publicidad. Si en
-              el futuro se añaden, se actualizará esta política y se solicitará el
-              consentimiento correspondiente.
-            </p>
-          </section>
-
-          <p class="actualizado">Última actualización: Pendiente de completar</p>
-        </article>
-
-        <footer>
-          <a class="marca" href="/">TEJONES<span>.</span></a>
-          <p>PREMIUM COVER BAND · ROCK EN DIRECTO</p>
-        </footer>
-      </main>
+      <div class="legal-footer">
+        <a href="/aviso-legal">Ver Aviso Legal →</a>
+      </div>
+    </div>
+  </main>
 </Layout>
 
 <style>
-  .navegacion {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 30px 7%;
-  }
-
-  .marca {
-    font-size: 1.25rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-  }
-
-  .marca span {
-    color: #c6a15b;
+  .legal-page {
+    padding: 120px 7% 80px 7%;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #e0dcd8;
   }
 
   .volver {
-    padding-bottom: 7px;
-    border-bottom: 1px solid #c6a15b;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-  }
-
-  .contenido {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 90px 7% 110px;
-  }
-
-  .etiqueta {
+    display: inline-block;
     color: #c6a15b;
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    letter-spacing: 0.25em;
+    text-decoration: none;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+  }
+
+  .volver:hover {
+    text-decoration: underline;
   }
 
   h1 {
-    margin: 22px 0 35px;
-    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 900;
-    letter-spacing: -0.06em;
-    line-height: 0.95;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
   }
 
-  .borrador {
-    margin: 0 0 50px;
-    padding: 18px 20px;
-    border-left: 2px solid #c6a15b;
-    color: #e6d3ae;
-    background: #15120e;
-    font-size: 0.88rem;
-    line-height: 1.7;
+  .ultima-actualizacion {
+    font-size: 0.8rem;
+    color: #888078;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   section {
-    margin-top: 42px;
+    margin-bottom: 40px;
   }
 
   h2 {
-    margin: 0 0 14px;
-    color: #f5f0e7;
-    font-size: 1.05rem;
-    letter-spacing: 0.02em;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: -0.01em;
   }
 
-  p,
-  li {
-    color: #bcb5ab;
-    font-size: 0.95rem;
-    line-height: 1.85;
-  }
-
-  p {
-    margin: 0;
+  p, li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #b0a89f;
+    margin-bottom: 15px;
   }
 
   ul {
-    margin: 0;
     padding-left: 20px;
   }
 
-  li + li {
-    margin-top: 6px;
+  li {
+    margin-bottom: 8px;
   }
 
   strong {
-    color: #d8d0c5;
+    color: #ffffff;
   }
 
-  .actualizado {
+  a {
+    color: #c6a15b;
+    text-decoration: underline;
+  }
+
+  .legal-footer {
     margin-top: 60px;
-    color: #888078;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 35px 7%;
-    border-top: 1px solid #ffffff12;
+  .legal-footer a {
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
   }
 
-  footer p {
-    color: #888078;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-align: right;
-  }
-
-  @media (max-width: 600px) {
-    .navegacion {
-      padding: 24px 6%;
-    }
-
-    .volver {
-      font-size: 0.62rem;
-    }
-
-    .contenido {
-      padding: 70px 7% 85px;
-    }
-
-    footer {
-      align-items: flex-start;
-      flex-direction: column;
-      padding: 30px 7%;
-    }
-
-    footer p {
-      text-align: left;
-    }
+  .legal-footer a:hover {
+    text-decoration: underline;
   }
 </style>

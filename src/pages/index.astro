@@ -2,9 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import ImageSlider from "../components/ImageSlider.astro";
-
-const banda = "TEJONES";
-const subtitulo = "PREMIUM COVER BAND";
+import Hero from "../components/Hero.astro";
 ---
 
 <Layout
@@ -17,24 +15,7 @@ const subtitulo = "PREMIUM COVER BAND";
           <a class="contacto" href="#contacto">CONTRATACIÓN ↗</a>
         </nav>
 
-        <section class="portada" id="inicio">
-          <div class="contenido">
-            <p class="etiqueta">ROCK · DIRECTO · SIN FILTROS</p>
-            <h1>{banda}</h1>
-            <p class="subtitulo">{subtitulo}</p>
-            <p class="descripcion">
-              Las canciones que marcaron una época.<br />
-              La energía de vivirlas en directo.
-            </p>
-
-            <a class="boton" href="#contacto">
-              LLEVAMOS EL ROCK A TU EVENTO <span>↗</span>
-            </a>
-          </div>
-
-          <span class="numero">80 / 90 / 00</span>
-          <span class="decoracion" aria-hidden="true"></span>
-        </section>
+        <Hero />
 
         <section class="presentacion" id="directo">
           <p class="etiqueta">NO ES SOLO MÚSICA</p>
@@ -63,8 +44,20 @@ const subtitulo = "PREMIUM COVER BAND";
         </section>
 
         <footer>
-          <a class="marca" href="#inicio">TEJONES<span>.</span></a>
-          <p>PREMIUM COVER BAND · ROCK EN DIRECTO</p>
+          <div class="footer-left">
+            <a class="marca" href="#inicio">TEJONES<span>.</span></a>
+            <p>PREMIUM COVER BAND · ROCK EN DIRECTO</p>
+          </div>
+          <div class="footer-right">
+            <div class="legal-links">
+              <a href="/privacidad">Política de Privacidad</a>
+              <span>·</span>
+              <a href="/aviso-legal">Aviso Legal</a>
+            </div>
+            <div class="pandacode-credit">
+              Made by <a href="https://www.linkedin.com/in/borja-garc%C3%ADa-g%C3%B3mez-de-segura-287441328/" target="_blank" rel="noreferrer" class="pandacode-link">PandaCode<span class="panda-emoji">🐼</span></a>
+            </div>
+          </div>
         </footer>
       </main>
 </Layout>
@@ -83,7 +76,7 @@ const subtitulo = "PREMIUM COVER BAND";
   }
 
   .marca {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 900;
     letter-spacing: 0.12em;
   }
@@ -99,214 +92,114 @@ const subtitulo = "PREMIUM COVER BAND";
     letter-spacing: 0.12em;
   }
 
-  .portada {
-    position: relative;
-    display: flex;
-    min-height: 90svh;
-    align-items: center;
-    overflow: hidden;
-    padding: 130px 10% 90px;
-    background:
-      radial-gradient(ellipse at 75% 45%, #4a281c55 0%, transparent 42%),
-      linear-gradient(115deg, #0a0a0a 25%, #17120e 100%);
-  }
-
-  .contenido {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
+  .presentacion, .contratacion {
+    padding: 80px 7%;
   }
 
   .etiqueta {
-    color: #c6a15b;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-  }
-
-  h1 {
-    margin: 22px 0 0;
-    font-size: clamp(4rem, 12vw, 10rem);
-    font-weight: 900;
-    letter-spacing: -0.09em;
-    line-height: 0.9;
-  }
-
-  .subtitulo {
-    margin-top: 22px;
-    color: #c6a15b;
-    font-size: clamp(0.8rem, 2vw, 1.2rem);
-    font-weight: 700;
-    letter-spacing: 0.32em;
-  }
-
-  .descripcion {
-    margin: 35px 0;
-    color: #c4bdb3;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    line-height: 1.8;
-  }
-
-  .boton {
-    display: inline-flex;
-    min-height: 54px;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 0 23px;
-    border: 1px solid #c6a15b;
-    color: #f5f0e7;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    transition: background 180ms ease, color 180ms ease;
-  }
-
-  .boton:hover {
-    color: #0a0a0a;
-    background: #c6a15b;
-  }
-
-  .boton span {
-    color: #c6a15b;
-  }
-
-  .boton:hover span {
-    color: #0a0a0a;
-  }
-
-  .numero {
-    position: absolute;
-    right: 7%;
-    bottom: 40px;
-    color: #ffffff55;
     font-size: 0.75rem;
-    letter-spacing: 0.3em;
-  }
-
-  .decoracion {
-    position: absolute;
-    top: 20%;
-    right: 8%;
-    width: 28vw;
-    height: 28vw;
-    max-width: 380px;
-    max-height: 380px;
-    border: 1px solid #c6a15b24;
-    border-radius: 50%;
-    box-shadow: 0 0 100px #c6a15b0b, inset 0 0 80px #c6a15b08;
-  }
-
-  .presentacion,
-  .contratacion {
-    padding: 110px 10%;
-  }
-
-  .presentacion {
-    max-width: 900px;
+    letter-spacing: 0.2em;
+    color: #c6a15b;
+    margin-bottom: 15px;
+    text-transform: uppercase;
   }
 
   h2 {
-    margin: 25px 0;
-    font-size: clamp(2.4rem, 6vw, 5rem);
-    letter-spacing: -0.05em;
-    line-height: 1;
-  }
-
-  .presentacion > p:not(.etiqueta),
-  .contratacion > p:not(.etiqueta) {
-    max-width: 570px;
-    color: #bcb5ab;
-    font-size: 1.05rem;
-    line-height: 1.9;
-  }
-
-  .contratacion {
-    background: #15120e;
-  }
-
-  .contratacion > p.instagram {
-    margin: 38px 0 0;
-    color: #888078;
-    font-size: 0.8rem;
-    line-height: 1.7;
-  }
-
-  .instagram a {
-    padding-bottom: 4px;
-    border-bottom: 1px solid #c6a15b;
-    color: #c6a15b;
-  }
-
-  .instagram span {
-    color: #c6a15b;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
   }
 
   footer {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    padding: 35px 7%;
-    border-top: 1px solid #ffffff12;
-  }
-
-  footer p {
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 7%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
     color: #888078;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-align: right;
   }
 
-  @media (max-width: 600px) {
-    .navegacion {
-      padding: 24px 6%;
-    }
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
 
-    .contacto {
-      font-size: 0.62rem;
-    }
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
 
-    .portada {
-      min-height: 82svh;
-      padding: 120px 7% 100px;
-    }
+  .legal-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
 
-    h1 {
-      font-size: clamp(3.5rem, 17vw, 6rem);
-    }
+  .legal-links a {
+    color: #888078;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
 
-    .subtitulo {
-      letter-spacing: 0.2em;
-    }
+  .legal-links a:hover {
+    color: #c6a15b;
+    text-decoration: underline;
+  }
 
-    .decoracion {
-      top: auto;
-      right: -15%;
-      bottom: 10%;
-      width: 65vw;
-      height: 65vw;
-    }
+  .pandacode-credit {
+    color: #888078;
+  }
 
-    .presentacion,
-    .contratacion {
-      padding: 80px 7%;
-    }
+  .pandacode-link {
+    color: #b0a89f;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
+  .panda-emoji {
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.5);
+    white-space: nowrap;
+    transition: max-width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .pandacode-link:hover {
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  .pandacode-link:hover .panda-emoji {
+    max-width: 30px;
+    opacity: 1;
+    transform: scale(1) rotate(10deg);
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.8rem;
+    }
     footer {
-      align-items: flex-start;
       flex-direction: column;
-      padding: 30px 7%;
+      align-items: flex-start;
+      gap: 20px;
     }
-
-    footer p {
-      text-align: left;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .boton {
-      transition: none;
+    .footer-right {
+      align-items: flex-start;
     }
   }
 </style>

@@ -1,0 +1,432 @@
+---
+import { getCollection } from "astro:content";
+import { processPhotos } from "../lib/gallery";
+
+const fotosEntries = await getCollection("fotos");
+const fotos = await processPhotos(
+  fotosEntries.map((f) => ({
+    alt: f.data.alt,
+    src: f.data.src,
+  }))
+);
+
+const total = fotos.length;
+const formatNumber = (value: number) => String(value).padStart(2, "0");
+---
+
+{total >= 8 && (
+  <section
+    class="galeria"
+    data-gallery
+    role="region"
+    aria-roledescription="galería"
+    aria-label="Galería fotográfica de Tejones Banda"
+  >
+    <div class="galeria-cabecera">
+      <p class="galeria-etiqueta">GALERÍA · EN DIRECTO</p>
+      <p class="galeria-contador" aria-hidden="true">
+        <span data-gallery-current>{formatNumber(1)}</span>
+        <span class="separador">/</span>
+        <span>{formatNumber(total)}</span>
+      </p>
+    </div>
+
+    <div
+      class="galeria-viewport"
+      id="galeria-viewport"
+      data-gallery-viewport
+      tabindex="0"
+      role="group"
+      aria-label="Galería de imágenes. Usa las flechas izquierda y derecha para navegar o explora la rejilla inferior."
+    >
+      {
+        fotos.map((foto, index) => (
+          <figure
+            class="slide-foto"
+            data-slide
+            data-slide-title={foto.alt}
+            role="group"
+            aria-roledescription="diapositiva"
+            aria-label={`${index + 1} de ${total}`}
+          >
+            <div class="marco-foto">
+              <img
+                src={foto.src}
+                srcset={foto.srcset}
+                sizes="(max-width: 768px) 100vw, 800px"
+                alt={foto.alt}
+                width={foto.width}
+                height={foto.height}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+              <span class="marco-esquinas" aria-hidden="true" />
+            </div>
+            <figcaption class="slide-pie">
+              <span class="slide-titulo">FOTO {formatNumber(index + 1)}</span>
+              <span class="slide-descripcion">{foto.alt}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <div class="galeria-controles">
+      <div class="galeria-flechas">
+        <button
+          type="button"
+          class="boton-flecha"
+          data-gallery-prev
+          aria-label="Foto anterior"
+          aria-controls="galeria-viewport"
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+        <button
+          type="button"
+          class="boton-flecha"
+          data-gallery-next
+          aria-label="Foto siguiente"
+          aria-controls="galeria-viewport"
+        >
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <div class="galeria-puntos" role="group" aria-label="Seleccionar foto">
+        {
+          fotos.map((foto, index) => (
+            <button
+              type="button"
+              class="punto"
+              data-gallery-dot
+              aria-label={`Ir a la foto ${index + 1}: ${foto.alt}`}
+              aria-current={index === 0 ? "true" : "false"}
+              aria-controls="galeria-viewport"
+            />
+          ))
+        }
+      </div>
+
+      <p class="galeria-instruccion" aria-hidden="true">DESLIZA O USA ← →</p>
+    </div>
+
+    <div class="galeria-rejilla" aria-label="Rejilla estática de fotografías">
+      {
+        fotos.map((foto, index) => (
+          <div class="rejilla-item">
+            <img
+              src={foto.src}
+              srcset={foto.srcset}
+              sizes="(max-width: 768px) 50vw, 300px"
+              alt={foto.alt}
+              width={foto.width}
+              height={foto.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="sr-only" data-gallery-status aria-live="polite"></p>
+  </section>
+)}
+
+<script>
+  import { initGallery } from "../scripts/gallery";
+  initGallery();
+</script>
+
+<style>
+  .galeria {
+    margin-top: 52px;
+  }
+
+  .galeria-cabecera {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 14px;
+  }
+
+  .galeria-etiqueta {
+    margin: 0;
+    color: #c6a15b;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+  }
+
+  .galeria-contador {
+    margin: 0;
+    color: #6f6860;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.18em;
+  }
+
+  .galeria-contador span:first-child {
+    color: #f5f0e7;
+  }
+
+  .separador {
+    margin: 0 6px;
+    color: #6f6860;
+  }
+
+  .galeria-viewport {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .galeria-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .galeria-viewport:focus-visible {
+    outline: 1px solid #c6a15b;
+    outline-offset: 4px;
+  }
+
+  .slide-foto {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin: 0;
+    scroll-snap-align: start;
+  }
+
+  .marco-foto {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 1px solid #ffffff12;
+    background: linear-gradient(135deg, #15110d 0%, #0b0a09 100%);
+  }
+
+  .marco-foto img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .marco-esquinas {
+    position: absolute;
+    inset: 20px;
+    pointer-events: none;
+    background:
+      linear-gradient(#c6a15b66, #c6a15b66) left top / 28px 1px no-repeat,
+      linear-gradient(#c6a15b66, #c6a15b66) left top / 1px 28px no-repeat,
+      linear-gradient(#c6a15b66, #c6a15b66) right top / 28px 1px no-repeat,
+      linear-gradient(#c6a15b66, #c6a15b66) right top / 1px 28px no-repeat,
+      linear-gradient(#c6a15b66, #c6a15b66) left bottom / 28px 1px no-repeat,
+      linear-gradient(#c6a15b66, #c6a15b66) left bottom / 1px 28px no-repeat,
+      linear-gradient(#c6a15b66, #c6a15b66) right bottom / 28px 1px no-repeat,
+      linear-gradient(#c6a15b66, #c6a15b66) right bottom / 1px 28px no-repeat;
+  }
+
+  .slide-pie {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    padding-top: 14px;
+  }
+
+  .slide-titulo {
+    color: #c6a15b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .slide-descripcion {
+    color: #888078;
+    font-size: 0.72rem;
+    text-align: right;
+  }
+
+  .galeria-controles {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 22px;
+  }
+
+  .galeria-flechas {
+    display: flex;
+    gap: 8px;
+  }
+
+  .boton-flecha {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff24;
+    color: #f5f0e7;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1rem;
+    transition: border-color 180ms ease, color 180ms ease;
+  }
+
+  .boton-flecha:hover {
+    border-color: #c6a15b;
+    color: #c6a15b;
+  }
+
+  .boton-flecha:focus-visible {
+    outline: 1px solid #c6a15b;
+    outline-offset: 3px;
+  }
+
+  .galeria-puntos {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .punto {
+    position: relative;
+    width: 28px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .punto::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    left: 4px;
+    height: 2px;
+    background: #ffffff26;
+    transform: translateY(-50%);
+    transition: background 180ms ease;
+  }
+
+  .punto:hover::before {
+    background: rgb(198 161 91 / 0.55);
+  }
+
+  .punto[aria-current="true"]::before {
+    background: #c6a15b;
+  }
+
+  .punto:focus-visible {
+    outline: 1px solid #c6a15b;
+    outline-offset: 2px;
+  }
+
+  .galeria-instruccion {
+    margin: 0;
+    color: #6f6860;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+  }
+
+  /* Rejilla estática visible sin JS (fallback para no-JS) */
+  .galeria-rejilla {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .rejilla-item {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 1px solid #ffffff12;
+  }
+
+  .rejilla-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Si JS no se ejecuta, ocultamos viewport interactivo y mostramos rejilla */
+  :global(:root:not(.js)) .galeria-viewport,
+  :global(:root:not(.js)) .galeria-controles {
+    display: none;
+  }
+
+  :global(:root:not(.js)) .galeria-rejilla {
+    display: grid;
+  }
+
+  /* Si JS se ejecuta, clase .js es añadida por gallery.ts, mostrando carrusel interactivo */
+  :global(.js) .galeria-viewport {
+    display: flex;
+  }
+  :global(.js) .galeria-controles {
+    display: flex;
+  }
+  :global(.js) .galeria-rejilla {
+    display: none;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 600px) {
+    .galeria {
+      margin-top: 36px;
+    }
+
+    .marco-foto {
+      aspect-ratio: 4 / 3;
+    }
+
+    .marco-esquinas {
+      inset: 12px;
+    }
+
+    .slide-pie {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .slide-descripcion {
+      text-align: left;
+    }
+
+    .galeria-instruccion {
+      display: none;
+    }
+
+    .galeria-controles {
+      margin-top: 18px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .boton-flecha,
+    .punto::before {
+      transition: none;
+    }
+  }
+</style>

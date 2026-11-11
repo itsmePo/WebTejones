@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { contactConfig } from "../config/contact";
+---
+
+<Layout
+  title="Aviso Legal | Tejones Banda"
+  description="Aviso legal e información obligatoria de Tejones Banda conforme a la LSSI-CE."
+>
+  <main class="legal-page">
+    <div class="legal-container">
+      <a href="/" class="volver">← Volver al inicio</a>
+      
+      <h1>Aviso Legal</h1>
+      <p class="ultima-actualizacion">Última actualización: Noviembre de 2026</p>
+
+      <section>
+        <h2>1. Datos Identificativos (Art. 10 LSSI-CE)</h2>
+        <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan los siguientes datos del responsable:</p>
+        <ul>
+          <li><strong>Nombre artístico / Denominación:</strong> Tejones Banda ({contactConfig.formName})</li>
+          <li><strong>Responsable:</strong> [PENDIENTE: Nombre del titular]</li>
+          <li><strong>NIF/CIF:</strong> [PENDIENTE: NIF del titular]</li>
+          <li><strong>Domicilio:</strong> [PENDIENTE: Dirección postal]</li>
+          <li><strong>Correo electrónico de contacto:</strong> {contactConfig.destinatario}</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>2. Objeto y Condiciones de Uso</h2>
+        <p>El presente sitio web tiene por objeto facilitar información sobre la actividad artística y musical de Tejones Banda, así como ofrecer un canal de contacto para contratación de eventos, ayuntamientos y celebraciones privadas.</p>
+        <p>El acceso y uso de este sitio web atribuye la condición de usuario, el cual acepta desde dicho acceso las condiciones aquí reflejadas.</p>
+      </section>
+
+      <section>
+        <h2>3. Propiedad Intelectual e Industrial</h2>
+        <p>Todos los contenidos del sitio web (textos, fotografías, diseño gráfico, logotipos, vídeos e imágenes) se encuentran protegidos por los derechos de propiedad intelectual e industrial titularidad de Tejones Banda o de terceros que han autorizado su uso o cesión documentada.</p>
+        <p>Queda expresamente prohibida la reproducción, distribución, comercialización o transformación no autorizada de dichos contenidos.</p>
+      </section>
+
+      <section>
+        <h2>4. Exresponsabilidad y Enlaces</h2>
+        <p>El sitio web incluye incrustaciones de vídeo de YouTube mediante una fachada de privacidad (modo nocookie), cargando el reproductor únicamente tras el consentimiento expreso del usuario mediante clic. Tejones Banda no se hace responsable de las políticas de privacidad o contenidos de las plataformas externas de terceros.</p>
+      </section>
+
+      <div class="legal-footer">
+        <a href="/privacidad">Ver Política de Privacidad →</a>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 120px 7% 80px 7%;
+    max-width: 900px;
+    margin: 0 auto;
+    color: #e0dcd8;
+  }
+
+  .volver {
+    display: inline-block;
+    color: #c6a15b;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+  }
+
+  .volver:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .ultima-actualizacion {
+    font-size: 0.8rem;
+    color: #888078;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 15px;
+    letter-spacing: -0.01em;
+  }
+
+  p, li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #b0a89f;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  strong {
+    color: #ffffff;
+  }
+
+  .legal-footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .legal-footer a {
+    color: #c6a15b;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .legal-footer a:hover {
+    text-decoration: underline;
+  }
+</style>
